@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0c1827">
+<meta name="description" content="Portafolio académico de un convertidor Boost solar de 55 W con control en cascada de voltaje fotovoltaico (Vpv) y corriente de entrada (Iin) para transferencia de energía hacia baterías LiFePO4. ITM, 2026.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Boost Solar 55 W | Control de voltaje y corriente de entrada">
+<meta property="og:description" content="Convertidor Boost síncrono con control en cascada de Vpv e Iin para transferencia fotovoltaica hacia baterías LiFePO4.">
+<meta property="og:image" content="assets/img/pcb-3d.webp">
+<title>Boost Solar 55 W | Control de voltaje y corriente de entrada</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script defer src="assets/main.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header" id="inicio">
+  <nav class="nav container" aria-label="Navegación principal">
+    <a href="#inicio" class="brand" aria-label="Boost Solar 55W, inicio"><span class="brand-mark">B<span>↗</span></span><span>BOOST<span class="brand-muted">/</span>55W</span></a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    <div id="nav-links" class="nav-links">
+      <a href="#proyecto">Proyecto</a><a href="#diseno">Diseño</a><a href="#control">Control</a><a href="#resultados">Resultados</a><a href="#galeria">Galería</a><a href="#documentacion" class="nav-action">Documentación <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
+</header>
+<main id="contenido">
+<section class="hero">
+ <div class="hero-grid container">
+  <div class="hero-copy">
+   <div class="eyebrow"><span class="eyebrow-line"></span> PROYECTO INTEGRADOR · INGENIERÍA ELECTRÓNICA · 2026</div>
+   <h1>Energía solar.<br><span>Control inteligente.</span></h1>
+   <p class="hero-lead">Diseño de un <strong>convertidor DC–DC Boost síncrono</strong> cuyo propósito es regular el <strong>voltaje del panel (V<sub>PV</sub>)</strong> y la <strong>corriente de entrada (I<sub>in</sub>)</strong> para transferir energía hacia una batería LiFePO₄. </p>
+   <div class="hero-actions"><a class="btn btn-primary" href="#proyecto">Explorar proyecto <span>↗</span></a><a class="btn btn-light" href="#resultados">Ver resultados <span>→</span></a></div>
+   <div class="hero-affiliation"><span class="circle-dot"></span> Institución Universitaria ITM · Medellín, Colombia</div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-image"><img src="assets/img/pcb-3d.webp" alt="Vista isométrica del diseño tridimensional de la PCB del convertidor Boost" fetchpriority="high"></div>
+    <span class="orbit orbit-1" aria-hidden="true"></span><span class="orbit orbit-2" aria-hidden="true"></span>
+    <div class="float-card"><span class="pulse"></span><div><small>ESTADO DEL PROTOTIPO</small><strong>Validación experimental parcial</strong></div></div>
+    <div class="corner-mark" aria-hidden="true">01 / POWER ELECTRONICS</div>
+  </div>
+ </div>
+ <div class="hero-bottom container"><span>DESLIZA PARA EXPLORAR</span><span aria-hidden="true">↓</span></div>
+</section>
+<div class="spec-strip"><div class="container spec-grid">
+ <div><strong>55 <em>W</em></strong><span>Potencia nominal del panel</span></div>
+ <div><strong>18,8 <em>V</em></strong><span>Referencia nominal de V<sub>PV</sub></span></div>
+ <div><strong>31,37 <em>kHz</em></strong><span>Frecuencia PWM verificada</span></div>
+ <div><strong>330 <em>µH</em></strong><span>Inductancia seleccionada</span></div>
+</div></div>
+<section class="section section-intro" id="proyecto"><div class="container">
+ <div class="section-head"><span class="kicker">01 / EL PROYECTO</span><h2>Del panel solar<br>al almacenamiento.</h2></div>
+ <div class="overview-grid">
+  <article class="info-card"><div class="mini-icon" aria-hidden="true">☀</div><h3>Fuente fotovoltaica</h3><p>Panel Victron BlueSolar de 55 W, con tensión en máxima potencia de 18,8 V y corriente de 2,94 A.</p><span class="info-index">01</span></article>
+  <article class="info-card"><div class="mini-icon" aria-hidden="true">⚡</div><h3>Conversión Boost</h3><p>Etapa síncrona con dos MOSFET, inductor de 330 µH y capacitores de filtrado de 100 µF.</p><span class="info-index">02</span></article>
+  <article class="info-card"><div class="mini-icon" aria-hidden="true">▤</div><h3>Control digital</h3><p>Arduino Uno con un PI externo de V<sub>PV</sub> que genera I<sub>ref</sub> y un PI interno de I<sub>in</sub> que ajusta el duty. Implementación aún en validación.</p><span class="info-index">03</span></article>
+ </div>
+ <div class="objective-note"><span class="note-mark">i</span><p><strong>Objetivo de control:</strong> mantener el voltaje fotovoltaico cerca de su referencia y regular la corriente de entrada mediante dos lazos PI en cascada. La integración con una batería requiere supervisión, protecciones y validación experimental.</p></div>
+</div></section>
+<section class="section section-technical" id="diseno"><div class="container">
+ <div class="section-head split-head"><div><span class="kicker">02 / DISEÑO ELECTRÓNICO</span><h2>Electrónica<br>de potencia.</h2></div><p>Una arquitectura Boost síncrona implementada en PCB, con accionamiento de compuertas, aislamiento de medición de corriente y fuentes auxiliares.</p></div>
+ <div class="technical-layout">
+   <figure class="technical-feature image-frame"><img src="assets/img/pcb-real.webp" alt="Fotografía real de la PCB ensamblada con bobina, IR2110, ACS712 y componentes de potencia" loading="lazy"><figcaption><b>Montaje físico del prototipo</b><span>Registro fotográfico del proyecto</span></figcaption></figure>
+   <div class="technical-details">
+    <div class="detail"><span class="detail-num">01</span><div><h3>Etapa de potencia</h3><p>Dos MOSFET IRFB4110, bobina toroidal de 330 µH, capacidad de filtrado y operación elevadora.</p></div></div>
+    <div class="detail"><span class="detail-num">02</span><div><h3>Etapa de disparo</h3><p>IR2110 con señales de mando complementarias a verificar y circuito de habilitación mediante LM555.</p></div></div>
+    <div class="detail"><span class="detail-num">03</span><div><h3>Instrumentación</h3><p>Sensor ACS712 de ±5 A (185 mV/A) y divisores resistivos para los canales analógicos del Arduino.</p></div></div>
+    <div class="detail"><span class="detail-num">04</span><div><h3>Microcontrolador</h3><p>Arduino Uno R3, ADC de 10 bits y Timer1 en Fast PWM, modo 14, con TOP = 509.</p></div></div>
+   </div>
+ </div>
+ <div class="inline-stats"><div><span>Consigna nominal del panel</span><strong>18,8 V</strong><small>V<sub>PV,ref</sub> · lazo externo propuesto</small></div><div><span>Sensor de corriente</span><strong>±5 A</strong><small>ACS712 · medición I<sub>in</sub></small></div><div><span>Frecuencia conmutación</span><strong>31,37 kHz</strong><small>Timer1 · prescaler 1</small></div></div>
+</div></section>
+<section class="section section-control" id="control"><div class="container">
+ <div class="section-head split-head"><div><span class="kicker">03 / SISTEMA DE CONTROL</span><h2>Dos lazos.<br>Una estrategia.</h2></div><p>El PI externo compara V<sub>PV</sub> con su referencia y genera I<sub>ref</sub>. El PI interno mide I<sub>in</sub> y ajusta el duty. La salida se supervisa para aplicar las protecciones requeridas.</p></div>
+ <div class="control-flow" role="img" aria-label="Diagrama de control: referencia de voltaje fotovoltaico a PI de voltaje PV, genera corriente de referencia hacia PI de corriente, genera duty para el Boost; realimentación de A0 y A2, y supervisión de salida independiente">
+   <div class="control-stage"><span class="stage-label">REFERENCIA PV</span><strong>V<sub>PV,ref</sub> ≈ 18,8 V</strong><small>Valor nominal del panel</small></div>
+   <span class="flow-arrow" aria-hidden="true">→</span>
+   <div class="control-stage primary-stage"><span class="stage-label">LAZO EXTERNO</span><strong>PI de V<sub>PV</sub></strong><small>Genera I<sub>ref</sub></small></div>
+   <span class="flow-arrow" aria-hidden="true">→</span>
+   <div class="control-stage primary-stage"><span class="stage-label">LAZO INTERNO</span><strong>PI de corriente</strong><small>Ajusta el duty</small></div>
+   <span class="flow-arrow" aria-hidden="true">→</span>
+   <div class="control-stage dark-stage"><span class="stage-label">ETAPA FÍSICA</span><strong>Boost + PWM</strong><small>D9 · 31,37 kHz</small></div>
+ </div>
+ <div class="feedback-row"><span><b>A0</b> <span>Mide el voltaje del panel, V<sub>PV</sub></span></span><span><b>A2</b> <span>ACS712 · corriente de entrada I<sub>in</sub></span></span><span><b>Vout</b> <span>Solo supervisión / protección pendiente de validar</span></span></div>
+ <div class="control-explainer"><div><span class="kicker">QUÉ REGULAMOS</span><strong>Regulación de V<sub>PV</sub> e I<sub>in</sub></strong></div><p>La batería establece la tensión en sus bornes durante la transferencia de energía dentro de sus condiciones de operación. El Boost ajusta su ciclo de trabajo para controlar la corriente tomada del panel y sostener su punto de operación fotovoltaico. El diseño debe detener o limitar la transferencia si se exceden los límites de batería, salida o corriente. Esta arquitectura está propuesta; aún falta validar los dos PI operando juntos.</p></div>
+ <div class="control-two-col"><div class="panel-white"><span class="kicker">IMPLEMENTACIÓN EN ARDUINO</span><h3>PWM de alta resolución temporal</h3><div class="codebox"><span class="codebox-label">TIMER1 · ATMEGA328P</span><pre><code>ICR1   = 509;
+TCCR1A = _BV(COM1A1) | _BV(WGM11);
+TCCR1B = _BV(WGM13) | _BV(WGM12) | _BV(CS10);
+// F = 16 MHz / (509 + 1)
+// F ≈ 31,37 kHz en D9</code></pre></div><p class="muted-small">Firmware experimental disponible en el repositorio. El periodo de actualización del PI interno programado es de 20 ms; no debe confundirse con el periodo del PWM.</p></div><div class="panel-white progress-panel"><span class="kicker">ESTADO DE DESARROLLO</span><h3>Validación por etapas</h3><div class="status-row"><span class="status-icon done">✓</span><div><strong>PWM Timer1</strong><small>Frecuencia verificada</small></div></div><div class="status-row"><span class="status-icon done">✓</span><div><strong>Lectura del ACS712</strong><small>Señal de corriente adquirida y diagnosticada en laboratorio</small></div></div><div class="status-row"><span class="status-icon partial">◐</span><div><strong>PI interno de corriente</strong><small>Código y medición; cierre de lazo pendiente de validación</small></div></div><div class="status-row"><span class="status-icon todo">○</span><div><strong>PI externo fotovoltaico</strong><small>Arquitectura definida; sin validación integral</small></div></div></div></div>
+</div></section>
+<section class="section section-simulation" id="simulaciones"><div class="container">
+ <div class="section-head split-head"><div><span class="kicker">04 / MODELADO Y SIMULACIÓN</span><h2>La teoría<br>puesta a prueba.</h2></div><p>Se calcularon las condiciones nominales de operación y se compararon con resultados obtenidos en simulaciones del convertidor ideal.</p></div>
+ <div class="sim-layout"><figure class="image-frame sim-figure"><img src="assets/img/bode.webp" loading="lazy" alt="Análisis preliminar de dinámica y respuesta temporal realizado en MATLAB"><figcaption><b>Análisis preliminar de control</b><span>Gráficas de MATLAB correspondientes a una etapa de modelado anterior</span></figcaption></figure><div class="sim-text"><span class="kicker">DISEÑO Y MODELADO</span><div class="big-number">330 <span>µH</span></div><p>Inductancia seleccionada para la etapa de potencia. El estudio del convertidor incluye modelos y análisis dinámicos previos; la etapa actual se centra en <strong>regular V<sub>PV</sub> e I<sub>in</sub></strong> con dos controladores PI en cascada.</p><dl><div><dt>Tensión nominal del panel en MPP</dt><dd>18,8 V</dd></div><div><dt>Frecuencia de conmutación</dt><dd>31,37 kHz</dd></div><div><dt>Potencia nominal del panel</dt><dd>55 W</dd></div></dl><small>Las gráficas corresponden a una iteración anterior y no demuestran la estabilidad del doble lazo definitivo.</small></div></div>
+</div></section>
+<section class="section section-lab" id="resultados"><div class="container">
+ <div class="section-head split-head"><div><span class="kicker">05 / ENSAYOS DE LABORATORIO</span><h2>Medir. Comparar.<br>Corregir.</h2></div><p>La documentación experimental registra tanto los avances como las anomalías encontradas durante la integración de la instrumentación y el firmware.</p></div>
+ <div class="lab-cards">
+  <article class="lab-card"><span class="lab-top">01 / MEDICIÓN DE CORRIENTE</span><h3>0,17 <small>A</small></h3><p>Lectura aproximada de corriente de entrada con el ACS712 de 5 A durante el ensayo de instrumentación.</p><span class="lab-label green">Adquisición de señal</span></article>
+  <article class="lab-card"><span class="lab-top">02 / PRUEBA SIN CONMUTACIÓN</span><h3>18,41 <small>V</small></h3><p>Voltaje de salida pasivo con 19,03 V de entrada; fuente de laboratorio en modo CV.</p><span class="lab-label blue">Medición física</span></article>
+  <article class="lab-card"><span class="lab-top">03 / DIAGNÓSTICO</span><h3>Estado <small>3</small></h3><p>El programa bloqueó el duty cuando la medición de salida resultó incoherente con el multímetro.</p><span class="lab-label amber">Falla detectada</span></article>
+ </div>
+ <div class="lab-comparison"><div class="lab-comparison-head"><div><span class="kicker">ANÁLISIS DE LA INSTRUMENTACIÓN</span><h3>Anomalía detectada en DIV_OUT</h3></div><span class="note-chip">Datos medidos en laboratorio</span></div><div class="bar-chart" role="img" aria-label="Medición del punto DIV_OUT: 0,60 voltios con la fuente de potencia, 1,00 voltio con la fuente auxiliar y 2,33 voltios con ambas fuentes"><div class="bar-item"><div class="bar-name">Solo potencia 19 V</div><div class="track"><div class="fill fill-good" style="width:25.8%"></div></div><b>0,60 V</b></div><div class="bar-item"><div class="bar-name">Solo auxiliar 18 V</div><div class="track"><div class="fill fill-mid" style="width:42.9%"></div></div><b>1,00 V</b></div><div class="bar-item"><div class="bar-name">Ambas fuentes</div><div class="track"><div class="fill fill-bad" style="width:100%"></div></div><b>2,33 V</b></div></div><p class="chart-footnote">Para Vout = 18,41 V y un divisor R3 = 270 kΩ / R4 = 10 kΩ se esperan ≈ 0,658 V en el punto medio. El diagnóstico no confirmó todavía una causa única de la interferencia.</p></div>
+ 
+</div></section>
+<section class="section section-gallery" id="galeria"><div class="container">
+ <div class="section-head split-head"><div><span class="kicker">06 / GALERÍA DEL PROYECTO</span><h2>Del esquema<br>al prototipo.</h2></div><p>Imágenes extraídas del informe y de los registros originales de desarrollo. Selecciona una imagen para ampliarla.</p></div>
+ <div class="gallery-actions" role="group" aria-label="Filtrar galería"><button type="button" class="filter-button active" data-filter="all" aria-pressed="true">Todas</button><button type="button" class="filter-button" data-filter="hardware" aria-pressed="false">Hardware</button><button type="button" class="filter-button" data-filter="simulation" aria-pressed="false">Simulación</button><button type="button" class="filter-button" data-filter="experiment" aria-pressed="false">Ensayos</button></div>
+ <div class="gallery-grid">
+   <button class="gallery-item tall" type="button" data-category="hardware" data-caption="PCB ensamblada — fotografía del prototipo" data-src="assets/img/pcb-real.webp"><img src="assets/img/pcb-real.webp" loading="lazy" alt="Fotografía de la PCB real del convertidor Boost"><span>01 / PCB ensamblada</span></button>
+   <button class="gallery-item" type="button" data-category="hardware" data-caption="Diseño 3D de la PCB" data-src="assets/img/pcb-3d.webp"><img src="assets/img/pcb-3d.webp" loading="lazy" alt="Diseño 3D de la PCB"><span>02 / Modelo tridimensional</span></button>
+   <button class="gallery-item" type="button" data-category="simulation" data-caption="Análisis preliminar del sistema de control en MATLAB" data-src="assets/img/bode.webp"><img src="assets/img/bode.webp" loading="lazy" alt="Gráficas de análisis preliminar del control"><span>03 / Modelado preliminar</span></button>
+   <button class="gallery-item" type="button" data-category="hardware" data-caption="Esquemático de la PCB original" data-src="assets/img/esquematico.webp"><img src="assets/img/esquematico.webp" loading="lazy" alt="Esquemático eléctrico original"><span>04 / Esquemático</span></button>
+   <button class="gallery-item" type="button" data-category="experiment" data-caption="Monitor Serie durante diagnóstico de sobretensión falsa" data-src="assets/img/serial-falla.webp"><img src="assets/img/serial-falla.webp" loading="lazy" alt="Captura de Monitor Serie con Estado 3 y Duty 0"><span>05 / Diagnóstico ADC</span></button>
+   <button class="gallery-item" type="button" data-category="hardware" data-caption="Trazado y distribución de componentes en la PCB" data-src="assets/img/layout.webp"><img src="assets/img/layout.webp" loading="lazy" alt="Diseño y trazado PCB"><span>06 / Diseño PCB</span></button>
+   <button class="gallery-item" type="button" data-category="experiment" data-caption="Módulo ACS712 montado sobre el convertidor" data-src="assets/img/acs712.webp"><img src="assets/img/acs712.webp" loading="lazy" alt="Módulo sensor de corriente ACS712 conectado a la placa"><span>07 / Sensor de corriente</span></button>
+   <button class="gallery-item" type="button" data-category="hardware" data-caption="Vista superior del modelo 3D de la PCB" data-src="assets/img/pcb-3d-top.webp"><img src="assets/img/pcb-3d-top.webp" loading="lazy" alt="Vista superior del diseño 3D de la PCB"><span>08 / PCB vista superior</span></button>
+ </div>
+ <div class="gallery-footer">Las fotografías y capturas proceden del montaje y las pruebas documentadas. El control en cascada aún se encuentra en etapa de validación experimental.</div>
+</div></section>
+<section class="section section-documents" id="documentacion"><div class="container">
+ <div class="section-head split-head"><div><span class="kicker">07 / DOCUMENTACIÓN</span><h2>Ingeniería<br>reproducible.</h2></div><p>Informe original, código fuente y scripts de cálculo. Los archivos de firmware se entregan con fines de revisión académica; no deben usarse en un cargador sin protecciones independientes.</p></div>
+ <div class="downloads-grid">
+   <a class="download-card" href="documentos/Informe_Proyecto_Boost_ITM_2026.docx" download><span class="dl-icon">DOC</span><div><strong>Informe académico</strong><small>Memoria de cálculo, metodología, simulación y discusión · Word</small></div><span class="dl-arrow">↗</span></a>
+   <a class="download-card" href="firmware/PWM_D9_31372Hz.ino" download><span class="dl-icon">INO</span><div><strong>Firmware PWM</strong><small>Prueba independiente de Timer1 · Arduino</small></div><span class="dl-arrow">↗</span></a>
+   <a class="download-card" href="firmware/PI_Vout_experimental.ino" download><span class="dl-icon">INO</span><div><strong>PI de Vout experimental</strong><small>Control previo; no equivale al doble lazo final</small></div><span class="dl-arrow">↗</span></a>
+   <a class="download-card" href="firmware/PI_corriente_A3_experimental_V3.ino" download><span class="dl-icon">INO</span><div><strong>PI de corriente V3</strong><small>Código experimental con sensado ACS712 y A3</small></div><span class="dl-arrow">↗</span></a>
+   <a class="download-card" href="simulaciones/Modelo_Boost_55W_300uH_historico.m" download><span class="dl-icon">.M</span><div><strong>Modelo MATLAB histórico</strong><small>Parámetros de una iteración anterior; verificar antes de reutilizar</small></div><span class="dl-arrow">↗</span></a>
+   <a class="download-card" href="README.md"><span class="dl-icon">MD</span><div><strong>README del repositorio</strong><small>Arquitectura, archivos y publicación en GitHub Pages</small></div><span class="dl-arrow">↗</span></a>
+ </div>
+ <div class="doc-note">El informe académico y algunos códigos describen etapas anteriores de diseño. El enfoque vigente del portafolio es el PI externo de V<sub>PV</sub> y el PI interno de I<sub>in</sub>, con salida supervisada y protecciones pendientes de validación. Este prototipo todavía no está autorizado para conectar una batería real.</div>
+</div></section>
+<section class="section section-team"><div class="container team-block"><div><span class="kicker">08 / EQUIPO DE TRABAJO</span><h2>Diseño, análisis<br>y experimentación.</h2><p>Proyecto integrador de la asignatura Electrónica de Potencia, Institución Universitaria ITM, periodo 2026-2.</p></div><div class="team-members"><div><span class="member-initial">JM</span><div><h3>Juan Esteban Moreno</h3><p>Diseño de potencia · Firmware · Simulación</p></div></div><div><span class="member-initial">AZ</span><div><h3>Andrés Alejandro Zapata</h3><p>Modelado · Integración · Documentación</p></div></div><div class="teacher">Docente: Juan Pablo Villegas Ceballos</div></div></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-content"><div><div class="footer-brand">BOOST<span>/</span>55W</div><p>Control fotovoltaico de V<sub>PV</sub> e I<sub>in</sub> para transferencia hacia baterías.<br>ITM · Ingeniería Electrónica · Medellín.</p></div><div><a href="#inicio">Volver arriba ↑</a><small>© <span id="year">2026</span> · Documentación técnica del equipo.</small></div></div></footer>
+<dialog class="lightbox" aria-label="Imagen ampliada"><button type="button" class="lightbox-close" aria-label="Cerrar imagen ampliada">×</button><figure><img src="" alt=""><figcaption></figcaption></figure></dialog>
+</body></html>
