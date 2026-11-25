@@ -95,14 +95,44 @@ TCCR1B = _BV(WGM13) | _BV(WGM12) | _BV(CS10);
  <div class="sim-layout"><figure class="image-frame sim-figure"><img src="assets/img/bode.webp" loading="lazy" alt="Análisis preliminar de dinámica y respuesta temporal realizado en MATLAB"><figcaption><b>Análisis preliminar de control</b><span>Gráficas de MATLAB correspondientes a una etapa de modelado anterior</span></figcaption></figure><div class="sim-text"><span class="kicker">DISEÑO Y MODELADO</span><div class="big-number">330 <span>µH</span></div><p>Inductancia seleccionada para la etapa de potencia. El estudio del convertidor incluye modelos y análisis dinámicos previos; la etapa actual se centra en <strong>regular V<sub>PV</sub> e I<sub>in</sub></strong> con dos controladores PI en cascada.</p><dl><div><dt>Tensión nominal del panel en MPP</dt><dd>18,8 V</dd></div><div><dt>Frecuencia de conmutación</dt><dd>31,37 kHz</dd></div><div><dt>Potencia nominal del panel</dt><dd>55 W</dd></div></dl></div></div>
 </div></section>
 <section class="section section-lab" id="resultados"><div class="container">
- <div class="section-head split-head"><div><span class="kicker">05 / ENSAYOS DE LABORATORIO</span><h2>Medir. Comparar.<br>Corregir.</h2></div><p>La documentación experimental registra tanto los avances como las anomalías encontradas durante la integración de la instrumentación y el firmware.</p></div>
- <div class="lab-cards">
-  <article class="lab-card"><span class="lab-top">01 / MEDICIÓN DE CORRIENTE</span><h3>0,17 <small>A</small></h3><p>Lectura aproximada de corriente de entrada con el ACS712 de 5 A durante el ensayo de instrumentación.</p><span class="lab-label green">Adquisición de señal</span></article>
-  <article class="lab-card"><span class="lab-top">02 / PRUEBA SIN CONMUTACIÓN</span><h3>18,41 <small>V</small></h3><p>Voltaje de salida pasivo con 19,03 V de entrada; fuente de laboratorio en modo CV.</p><span class="lab-label blue">Medición física</span></article>
-  <article class="lab-card"><span class="lab-top">03 / DIAGNÓSTICO</span><h3>Estado <small>3</small></h3><p>El programa bloqueó el duty cuando la medición de salida resultó incoherente con el multímetro.</p><span class="lab-label amber">Falla detectada</span></article>
- </div>
- <div class="lab-comparison"><div class="lab-comparison-head"><div><span class="kicker">ANÁLISIS DE LA INSTRUMENTACIÓN</span><h3>Anomalía detectada en DIV_OUT</h3></div><span class="note-chip">Datos medidos en laboratorio</span></div><div class="bar-chart" role="img" aria-label="Medición del punto DIV_OUT: 0,60 voltios con la fuente de potencia, 1,00 voltio con la fuente auxiliar y 2,33 voltios con ambas fuentes"><div class="bar-item"><div class="bar-name">Solo potencia 19 V</div><div class="track"><div class="fill fill-good" style="width:25.8%"></div></div><b>0,60 V</b></div><div class="bar-item"><div class="bar-name">Solo auxiliar 18 V</div><div class="track"><div class="fill fill-mid" style="width:42.9%"></div></div><b>1,00 V</b></div><div class="bar-item"><div class="bar-name">Ambas fuentes</div><div class="track"><div class="fill fill-bad" style="width:100%"></div></div><b>2,33 V</b></div></div><p class="chart-footnote">Para Vout = 18,41 V y un divisor R3 = 270 kΩ / R4 = 10 kΩ se esperan ≈ 0,658 V en el punto medio. El diagnóstico no confirmó todavía una causa única de la interferencia.</p></div>
- 
+<div class="section-head split-head">
+<div><span class="kicker">05 / ENSAYOS DE LABORATORIO</span><h2>Implementación y resultados<br>experimentales.</h2></div>
+<p>Los ensayos realizados sobre el prototipo permitieron comprobar el funcionamiento del control PI de corriente, la adquisición de señales y la generación de la señal PWM para el convertidor Boost.</p>
+</div>
+<div clss="lab-cards">
+<article class="lab-card">
+<span class="lab-top">01 / CONTROL DE CORRIENTE</span>
+<h3>PI <small>✓</small></h3>
+<p>Control de corriente de entrada mediante realimentación y ajuste dinámico del ciclo de trabajo de la señal PWM.</p>
+<span class="lab-label green">Funcionamiento verificado</span>
+</article>
+<article class="lab-card">
+<span class="lab-top">02 / CONTROL DIGITAL</span>
+<h3>20 <small>ms</small></h3>
+<p>Periodo de actualización del controlador PI de corriente implementado en Arduino Uno.</p>
+<span class="lab-label blue">Implementación digital</span>
+</article>
+<article class="lab-card">
+<span class="lab-top">03 / CONTROL DE VOLTAJE</span>
+<h3>18,8 <small>V</small></h3>
+<p>Referencia de operación fotovoltaica para el controlador externo de voltaje.</p>
+<span class="lab-label amber">Desarrollo avanzado</span>
+</article>
+</div>
+<div class="lab-comparison">
+<div class="lab-comparison-head">
+<div>
+<span class="kicker">RESULTADOS EXPERIMENTALES</span>
+<h3>Control PI de corriente</h3>
+</div>
+<span class="note-chip">Implementación en laboratorio</span>
+</div>
+<p>El controlador PI calcula el error entre la corriente de referencia y la corriente medida mediante el sensor ACS712. A partir de este error, el algoritmo de control discreto modifica el ciclo de trabajo de la señal PWM del convertidor Boost.</p>
+<br>
+<p>El lazo interno de corriente utiliza una ganancia proporcional de 0,060 y una ganancia integral de 0,45, con un periodo de actualización de 20 ms y una frecuencia de conmutación de 31,37 kHz.</p>
+<br>
+<p>El funcionamiento experimental del control de corriente representa un avance en la implementación de la arquitectura de control en cascada, cuya etapa externa establece la referencia de corriente a partir del voltaje fotovoltaico.</p>
+</div>
 </div></section>
 <section class="section section-gallery" id="galeria"><div class="container">
  <div class="section-head split-head"><div><span class="kicker">06 / GALERÍA DEL PROYECTO</span><h2>Del esquema<br>al prototipo.</h2></div><p>Imágenes extraídas del informe y de los registros originales de desarrollo. Selecciona una imagen para ampliarla.</p></div>
