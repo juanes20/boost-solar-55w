@@ -54,7 +54,7 @@
  <div class="overview-grid">
   <article class="info-card"><div class="mini-icon" aria-hidden="true">☀</div><h3>Fuente fotovoltaica</h3><p>Panel Victron BlueSolar de 55 W, con tensión en máxima potencia de 18,8 V y corriente de 2,94 A.</p><span class="info-index">01</span></article>
   <article class="info-card"><div class="mini-icon" aria-hidden="true">⚡</div><h3>Conversión Boost</h3><p>Etapa síncrona con dos MOSFET, inductor de 330 µH y capacitores de filtrado de 100 µF.</p><span class="info-index">02</span></article>
-  <article class="info-card"><div class="mini-icon" aria-hidden="true">▤</div><h3>Control digital</h3><p>Arduino Uno con un PI externo de V<sub>PV</sub> que genera I<sub>ref</sub> y un PI interno de I<sub>in</sub> que ajusta el duty. Implementación aún en validación.</p><span class="info-index">03</span></article>
+  <article class="info-card"><div class="mini-icon" aria-hidden="true">▤</div><h3>Control digital</h3><p>Sistema de control PI en cascada mediante Arduino Uno, compuesto por un lazo externo de voltaje del panel fotovoltaico y un lazo interno de corriente de entrada, encargado de ajustar el ciclo de trabajo de la señal PWM.</p><span class="info-index">03</span></article>
  </div>
  <div class="objective-note"><span class="note-mark">i</span><p><strong>Objetivo de control:</strong> mantener el voltaje fotovoltaico cerca de su referencia y regular la corriente de entrada mediante dos lazos PI en cascada. La integración con una batería requiere supervisión, protecciones y validación experimental.</p></div>
 </div></section>
